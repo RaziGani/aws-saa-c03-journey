@@ -20,7 +20,7 @@ For Example:
 An identity for human or application to gain access to AWS services.
 
 ### Group
-A container for users.
+A container for users. Groups exist for operational sanity at scale and clean auditing.
 
 ### Role
 An identity with no permanent credentials, assumed temporarily
@@ -29,7 +29,10 @@ An identity with no permanent credentials, assumed temporarily
 A JSON document that defines what actions are allowed or denied, on what resources and under what conditions
 
 ## The golden rule
-If root account user's credentials are leaked, the entire AWS account is compromised.
+Don't use root for daily work because root's permissions cannot be restricted by any policy, so every time you use it, you expose an un-limitable identity to possible compromise. 
 
 ## What was hardest or most confusing today
 Understanding "Role" and how it is being used.
+
+## Users vs Roles:
+Users are permanent identities with long-lived credentials for humans and specific applications. Roles are temporary identities with short-lived credentials for AWS services, cross-account access, and federated logins.
