@@ -102,3 +102,31 @@ GetObject on other-bucket/file.txt →   denied   Implicitly denied (no matching
 DeleteObject → denied (this one is correct)
 
 Sequence — write a buggy policy, simulator catches it, read the error, fix the bugs, simulator confirms 
+
+Version: This just tells AWS which policy language format you’re using so it knows how to read the policy correctly.
+Statement: This is the main section where you actually define the rules—basically the “meat” of the policy.
+Effect: This decides whether you’re allowing or denying something, so it’s either “Allow” or “Deny.”
+Action: This specifies what operations are being controlled, like reading from a bucket or launching an instance.
+Resource: This defines which specific resource (or resources) the action applies to, like a particular S3 bucket or EC2 instance.
+Condition: This adds extra rules or filters, like only allowing access at certain times or from certain IP addresses.
+Principal: This tells who the policy applies to, such as a user, role, or service trying to access something.
+
+
+**Explicit Deny > Explicit Allow > Default Deny**
+Explicit Deny: If a policy clearly says “deny,” it overrides everything else—this prevents accidental access even if another policy allows it.
+Explicit Allow: If something is specifically allowed and there’s no deny blocking it, then access is granted—this is how permissions are normally given.
+Default Deny: If you didn’t explicitly allow something, it’s automatically denied—this enforces least privilege by making sure nothing is accessible unless you say so.
+
+
+"arn:aws:s3:::company-reports" (refers to the bucket itself)
+arn:aws:s3:::company-reports/* (refers to every object inside the bucket)
+Using only arn:aws:s3:::company-reports breaks GetObject; using only arn:aws:s3:::company-reports/* breaks ListBucket. You need both ARNs to allow listing and reading.
+
+
+StringEquals: { aws:username: "alice" } → applies when username IS alice
+StringNotEquals: { aws:username: "alice" } → applies when username is NOT alice
+Bool: { aws:MultiFactorAuthPresent: "true" } → applies when MFA WAS used
+Bool: { aws:MultiFactorAuthPresent: "false" } → applies when MFA was NOT used
+
+**Hardest part of today.**
+After creating a policy, the hardest part is debugging. I need to really need to read understand the Allow/Deny permissions in order to understand the statement.
