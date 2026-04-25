@@ -109,7 +109,7 @@ Effect: This decides whether you’re allowing or denying something, so it’s e
 Action: This specifies what operations are being controlled, like reading from a bucket or launching an instance.
 Resource: This defines which specific resource (or resources) the action applies to, like a particular S3 bucket or EC2 instance.
 Condition: This adds extra rules or filters, like only allowing access at certain times or from certain IP addresses.
-Principal: This tells who the policy applies to, such as a user, role, or service trying to access something.
+Principal: This tells who the policy applies to, such as a user, role, or service trying to access something. Principal appears in policies attached to RESOURCES (like S3 bucket policies, role trust policies), not in policies attached to identities (like the ones we wrote today).
 
 
 **Explicit Deny > Explicit Allow > Default Deny**
