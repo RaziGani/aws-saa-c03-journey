@@ -35,4 +35,4 @@ Don't use root for daily work because root's permissions cannot be restricted by
 Understanding "Role" and how it is being used.
 
 ## Users vs Roles:
-Users are permanent identities with long-lived credentials for humans and specific applications. Roles are temporary identities with short-lived credentials for AWS services, cross-account access, and federated logins.
+Users are permanent identities with long-lived credentials for humans and specific applications. Roles are temporary identities with short-lived credentials for AWS services, cross-account access, and federated logins. 
