@@ -5,14 +5,15 @@
       "Effect": "Allow",
       "Action": ["s3:GetObject", "s3:ListBucket"],
       "Resource": [
-        "arn:aws:s3:::company-reports",
-        "arn:aws:s3:::company-reports/*"
+        "arn:aws:s3:::company-reports", <-- the bucket itself (no slash)
+        "arn:aws:s3:::company-reports/*" <-- every object inside the bucket
       ]
     }
   ]
 }
 
-The above policy Explicitly Allows GetObject and ListBucket on the S3 from the company-reports folder.
+The above policy Explicitly Allows GetObject and ListBucket on the S3 from the company-reports folder. (WRONG)
+Corrections: company-reports is the bucket name. S3 doesn't actually have folders.
 
 
 {
@@ -36,7 +37,8 @@ The above policy Explicitly Allows GetObject and ListBucket on the S3 from the c
   ]
 }
 
-The above policy Explicitly Allow all Actions on the EC2 for everything in the account. However Explicit Deny overides the Explicit Allow when Terminating an EC2 instance from the region "ap-southeast-1"
+The above policy Explicitly Allow all Actions on the EC2 for everything in the account. However Explicit Deny overides the Explicit Allow when Terminating an EC2 instance from the region "ap-southeast-1" (WRONG)
+Correction: Full EC2 access in every region, but I can only TERMINATE instances inside Singapore. Termination in any other region is blocked.
 
 
 **The original wrong policy** 
