@@ -42,7 +42,7 @@ C:\Users\USER>aws sts get-caller-identity --profile s3reader
 
 C:\Users\USER>aws iam list-users --profile s3reader
 
-aws: [ERROR]: An error occurred (AccessDenied) when calling the ListUsers operation: User: arn:aws:sts::610572472670:assumed-role/S3-Reader-Role/day3-test is not authorized to perform: iam:ListUsers on resource: arn:aws:iam::610572472670:user/ because no identity-based policy allows the iam:ListUsers action
+aws: [ERROR]: An error occurred (AccessDenied) when calling the ListUsers operation: User: arn:aws:sts::xxxxxxxxxxxx:assumed-role/S3-Reader-Role/day3-test is not authorized to perform: iam:ListUsers on resource: arn:aws:iam::xxxxxxxxxxxx:user/ because no identity-based policy allows the iam:ListUsers action
 This is denied because the credentials being used belong to an assumed role session (S3-Reader-Role), and that role does not have permission to call iam:ListUsers.
 
 
