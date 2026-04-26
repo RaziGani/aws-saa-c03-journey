@@ -129,4 +129,4 @@ Bool: { aws:MultiFactorAuthPresent: "true" } → applies when MFA WAS used
 Bool: { aws:MultiFactorAuthPresent: "false" } → applies when MFA was NOT used
 
 **Hardest part of today.**
-After creating a policy, the hardest part is debugging. I need to really need to read understand the Allow/Deny permissions in order to understand the statement.
+After creating a policy, the hardest part is debugging. I need to really need to read understand the Allow/Deny permissions in order to understand the statements.
